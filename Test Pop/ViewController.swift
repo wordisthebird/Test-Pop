@@ -96,6 +96,7 @@ extension ViewController: popupDelegate{
             print("Removed popup")
         }
     }
+    
 }
 
 extension UIColor{

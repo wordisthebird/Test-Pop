@@ -23,7 +23,6 @@ class PopUpWindow: UIView {
         img.translatesAutoresizingMaskIntoConstraints = false
         img.heightAnchor.constraint(equalToConstant: 80).isActive = true
         img.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        
         return img
     }()
     
@@ -31,7 +30,7 @@ class PopUpWindow: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Avenir", size: 24)
-        label.text = "View Menu"
+        label.text = "Flipside"
         return label
     }()
     
@@ -47,11 +46,40 @@ class PopUpWindow: UIView {
         return button
     }()
     
+    /*let close: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .red
+        button.setTitle("X", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 24
+        return button
+    }()*/
+    
+    
+    let close: UIImageView = {
+        let img = UIImageView(image: #imageLiteral(resourceName: "close"))
+        img.translatesAutoresizingMaskIntoConstraints = false
+        img.isUserInteractionEnabled = true
+        let tapRecognizer = UITapGestureRecognizer(target: self, action:  #selector(handleDismissal))
+        img.addGestureRecognizer(tapRecognizer)
+        //img.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
+        
+        return img
+    }()
+    
     //mark init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        
+        addSubview(close)
+        close.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        close.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        close.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
+        close.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         
         addSubview(imageView)
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -28).isActive = true
