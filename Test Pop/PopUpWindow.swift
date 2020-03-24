@@ -26,13 +26,13 @@ class PopUpWindow: UIView {
         return img
     }()
     
-    let notificationLabel: UILabel = {
+    /*let notificationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Avenir", size: 24)
         label.text = "Flipside"
         return label
-    }()
+    }()*/
     
     
     let button: UIButton = {
@@ -58,15 +58,15 @@ class PopUpWindow: UIView {
     }()*/
     
     
-    let close: UIImageView = {
-        let img = UIImageView(image: #imageLiteral(resourceName: "close"))
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.isUserInteractionEnabled = true
-        let tapRecognizer = UITapGestureRecognizer(target: self, action:  #selector(handleDismissal))
-        img.addGestureRecognizer(tapRecognizer)
-        //img.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
+    let close: UIButton = {
+        let image = UIImage(named: "close")
+        let button = UIButton(type: UIButton.ButtonType.custom) as UIButton
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(image, for: .normal)
+        //button.addTarget(self, action: Selector("btnTouched:"), for:.touchUpInside)
+        button.addTarget(self, action: #selector(handleDismissal), for: .touchUpInside)
         
-        return img
+        return button
     }()
     
     //mark init
@@ -85,9 +85,9 @@ class PopUpWindow: UIView {
         imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -28).isActive = true
         imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-        addSubview(notificationLabel)
+        /*addSubview(notificationLabel)
         notificationLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        notificationLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        notificationLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true*/
         
         addSubview(button)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true

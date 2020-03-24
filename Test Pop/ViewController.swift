@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         view.addSubview(popUpView)
         popUpView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40).isActive = true
         popUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        popUpView.heightAnchor.constraint(equalToConstant: view.frame.width - 104).isActive = true
+        popUpView.heightAnchor.constraint(equalToConstant: view.frame.width - 154).isActive = true
         popUpView.widthAnchor.constraint(equalToConstant: view.frame.width - 104).isActive = true
         
         popUpView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
@@ -79,15 +79,13 @@ class ViewController: UIViewController {
             self.popUpView.alpha = 1
             self.popUpView.transform = CGAffineTransform.identity
         }
-        
-        
     }
 }
 
 extension ViewController: popupDelegate{
     
     func handleDismissal() {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             self.visualEffectView.alpha = 0
             self.popUpView.alpha = 0
             self.popUpView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
